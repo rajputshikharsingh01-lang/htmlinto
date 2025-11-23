@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Registration Form</title>
+  <style>
+    body{font-family:Arial;padding:20px;}
+    form{max-width:400px;background:#fff;padding:16px;border-radius:8px;border:1px solid #ccc;}
+    label{font-weight:600;margin-top:10px;display:block;}
+    input,select{width:100%;padding:8px;margin-top:5px;border-radius:5px;border:1px solid #aaa;}
+    button{margin-top:12px;padding:10px;border:0;border-radius:6px;background:#007bff;color:white;}
+    .error{color:red;font-size:0.9rem;margin-top:6px;}
+  </style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="regForm" novalidate>
+  <label>Name</label>
+  <input type="text" id="name" required minlength="3">
+
+  <label>Email</label>
+  <input type="email" id="email" required>
+
+  <label>Password (min 6 chars)</label>
+  <input type="password" id="password" required minlength="6">
+
+  <label>Age</label>
+  <input type="number" id="age" min="13" max="120">
+
+  <label>Role</label>
+  <select id="role" required>
+    <option value="">--Select--</option>
+    <option>Student</option>
+    <option>Developer</option>
+    <option>Designer</option>
+  </select>
+
+  <div class="error" id="err"></div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+const form = document.getElementById('regForm');
+const err = document.getElementById('err');
+
+form.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  err.textContent = "";
+
+  if(!form.checkValidity()){
+    err.textContent = "Please fill all required fields correctly.";
+    return;
+  }
+  alert("Form submitted successfully!");
+});
+</script>
+
+</body>
+</html>
